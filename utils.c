@@ -37,7 +37,35 @@ struct map* init_map (int width, int height)
 	for (int i = 0; i < height; ++i){
 		this_map->fields[i] = (struct field *) malloc (sizeof(struct field)*width);
 	}
+	create_map(this_map);
 	return this_map;
+}
+void create_map (struct map* this_map)
+{
+	int i, j;
+	for (i = 0; i < this_map->height-1; ++i){
+		for (j = 0; j < this_map->width-1; ++j){
+			if(i == 0){
+				this_map->fields[i][j].texture = '-';
+				if( (j == 0) || (j == this_map->width-2)){
+					this_map->fields[i][j].texture = '*';
+				}
+			} else if( (j == 0) || (j == this_map->width-2)){
+				this_map->fields[i][j].texture = '|';
+			} else {
+				this_map->fields[i][j].texture = '.';
+			}
+		}
+		this_map->fields[i][j].texture = '\n';
+	}
+	for (j = 0; j < this_map->width-1; ++j){
+		if ( (j == 0) || (j == this_map->width-2) ){
+			this_map->fields[i][j].texture = '*';
+		} else {
+			this_map->fields[i][j].texture = '-';
+		}
+	}
+	this_map->fields[i][j].texture = ' ';
 }
 void destroy_map (struct map* this_map)
 {
@@ -49,9 +77,17 @@ void destroy_map (struct map* this_map)
 }
 void print_map(struct map * this_map)
 {
-	for (int i = 0; i < this_map->height; ++i){
-		for (int i = 0; i < this_map->width; ++i){
-			/* code */
+	int i, j;
+	for (i = 0; i < this_map->height-1; ++i){
+		for (j = 0; j < this_map->width; ++j){
+			putchar(this_map->fields[i][j].texture);
 		}
 	}
+	for (j = 0; j < this_map->width-1; ++j){
+		putchar(this_map->fields[i][j].texture);
+	}
+	fflush(stdout);
+}
+void get_window_size (){
+
 }

@@ -12,3 +12,16 @@ void call_termios(int reset){
 		tcsetattr(STDIN_FILENO, TCSANOW, &tio);
 	}
 }
+
+char* moveToPos(int x, int y){
+	static int old_x = 2, old_y = 2;
+	static char ret [100];
+	sprintf(ret, "\033[%i;%iH", old_x, old_y);
+	printf("%s.", ret);
+	sprintf(ret, "\033[%i;%iH", x, y);
+	printf("%so", ret);
+	fflush(stdout);
+	old_x = x;
+	old_y = y;
+	return ret;
+}

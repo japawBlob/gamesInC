@@ -6,3 +6,5 @@
 //#include <fcntl.h>
 
 void call_termios(int reset);
+
+char* moveToPos(int x, int y);

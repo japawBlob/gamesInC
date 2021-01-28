@@ -15,27 +15,35 @@ int main(int argc, char const *argv[])
 	for (i = 0; i < size.ws_row-1; ++i){
 		for (int j = 0; j < size.ws_col-1; ++j){
 			//printf("%i", i%10);
-			putchar( (i%10) + 48 );
+			putchar( '.' );
 		}
 		//printf("\n\r");
 		putchar('\n');
 	}
 	for (int j = 0; j < size.ws_col-1; ++j){
 		//printf("%i", i%10);
-		putchar( (i%10) + 48 );
+		putchar( '.' );
 	}
 	fflush(stdout);
-	
+	//printf("\033[8;5Hhello");
+	int x = 2, y = 2;
+	moveToPos(x, y);
 	while(1){
+		
 		//rewind(stdout);
 		//printf("   blob   ");
 		//printf("\033[<6>A    blob   ");
 		//printf("");
 		//fflush(stdout);
-		printf("\033[8;5Hhello");
+		
 
 		int blob = getchar();
 		if( blob == 48 ) break;	
+		if( blob == 'w') x--;
+		if( blob == 'a') y--;
+		if( blob == 's') x++;
+		if( blob == 'd') y++;
+		moveToPos(x,y);
 	}
 	
 	

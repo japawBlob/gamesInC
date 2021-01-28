@@ -9,8 +9,10 @@ int main(int argc, char const *argv[])
 	//while(1){
 	ioctl(STDOUT_FILENO, TIOCGWINSZ, &size);
 	//printf("width: %i\theight: %i\n", size.ws_row, size.ws_col);
-	//usleep(1000*100);
+	//usleep(1000*100)
 //}	
+	struct map* this_map = init_map(size.ws_col, size.ws_row);
+	destroy_map(this_map);
 	int i;
 	for (i = 0; i < size.ws_row-1; ++i){
 		for (int j = 0; j < size.ws_col-1; ++j){
@@ -27,7 +29,7 @@ int main(int argc, char const *argv[])
 	fflush(stdout);
 	//printf("\033[8;5Hhello");
 	int x = 2, y = 2;
-	moveToPos(x, y);
+	move_to_pos(x, y);
 	while(1){
 		
 		//rewind(stdout);
@@ -43,7 +45,7 @@ int main(int argc, char const *argv[])
 		if( blob == 'a') y--;
 		if( blob == 's') x++;
 		if( blob == 'd') y++;
-		moveToPos(x,y);
+		move_to_pos(x,y);
 	}
 	
 	

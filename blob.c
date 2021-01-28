@@ -10,6 +10,9 @@ void tryCursorMovement(){
 	//printf("width: %i\theight: %i\n", size.ws_row, size.ws_col);
 	//usleep(1000*100);
 //}	
+	struct map* this_map = init_map(size.ws_col, size.ws_row);
+	destroy_map(this_map);
+
 	int i;
 	for (i = 0; i < size.ws_row-1; ++i){
 		for (int j = 0; j < size.ws_col; ++j){

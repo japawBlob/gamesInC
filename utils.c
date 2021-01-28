@@ -49,10 +49,8 @@ void destroy_map (struct map* this_map)
 }
 void print_map(struct map * this_map)
 {
-	for (int i = 0; i < this_map->height; ++i)
-	{
-		for (int i = 0; i < this_map->width; ++i)
-		{
+	for (int i = 0; i < this_map->height; ++i){
+		for (int i = 0; i < this_map->width; ++i){
 			/* code */
 		}
 	}

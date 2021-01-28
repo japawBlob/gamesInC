@@ -3,27 +3,18 @@
 #include <unistd.h> // for STDOUT_FILENO
 
 
-void tryCursorMovement(){
+void tryCursorMovement()
+{
 	struct winsize size;
-	//while(1){
 	ioctl(STDOUT_FILENO, TIOCGWINSZ, &size);
-	//printf("width: %i\theight: %i\n", size.ws_row, size.ws_col);
-	//usleep(1000*100);
-//}	
-	struct map* this_map = init_map(size.ws_col, size.ws_row);
-	destroy_map(this_map);
-
 	int i;
 	for (i = 0; i < size.ws_row-1; ++i){
 		for (int j = 0; j < size.ws_col; ++j){
-			//printf("%i", i%10);
 			putchar('0');
 		}
-		//printf("\n");
 		putchar('\n');
 	}
 	for (int j = 0; j < size.ws_col; ++j){
-		//printf("%i", i%10);
 		putchar('0');
 	}
 	fflush(stdout);
@@ -34,10 +25,8 @@ void tryCursorMovement(){
 }
 
 void printBlocks(){
-	for (int i = 0; i < 50; ++i)
-	{
-		for (int j = 0; j < 50; ++j)
-		{
+	for (int i = 0; i < 50; ++i){
+		for (int j = 0; j < 50; ++j){
 			putchar('0');
 		}
 		putchar('\n');

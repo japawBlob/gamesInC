@@ -8,7 +8,7 @@ int main(int argc, char const *argv[])
 	call_termios(0);
 	ioctl(STDOUT_FILENO, TIOCGWINSZ, &size);
 	int width, height;
-	width = size.ws_col+1;
+	width = size.ws_col;
 	height = size.ws_row;
 	struct map* this_map = init_map(width, height);
 	//destroy_map(this_map);

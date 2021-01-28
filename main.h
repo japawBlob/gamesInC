@@ -25,3 +25,5 @@ struct map* init_map (int width, int height);
 void destroy_map (struct map* this_map);
 
 void create_map (struct map* this_map);
+
+void get_window_size ();

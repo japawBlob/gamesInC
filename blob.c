@@ -32,11 +32,38 @@ void printBlocks(){
 		putchar('\n');
 	}
 }
+void tryModifyFunc(int *i){
+	int temp = *i;
+	temp++;
+	*i += 1;
+	(*i)++;
+	//*i = 5;
+}
+void swap(int *x, int *y) {
+
+   int temp;
+
+   temp = *x; /* save the value of x */
+   *x = *y;    /* put y into x */
+   *y = temp; /* put temp into y */
+  
+   return;
+}
 
 int main(int argc, char const *argv[])
 {
   	//tryCursorMovement();
-	printBlocks();
-	while(1);
+	int i = 0;
+	int j = 5;
+	//int *p = &i;
+	//tryModifyFunc(&i);
+	printf("%i %i\n", i, j);
+	swap(&i, &j);	
+	printf("%i %i\n", i, j);
+	tryModifyFunc(&i);
+	printf("%i %i\n", i, j);
+	
+	//printBlocks();
+	//while(1);
 	return 0;
 }

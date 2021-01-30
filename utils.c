@@ -1,8 +1,15 @@
 #include "main.h"
 
-static struct map* this_map;
 static void get_window_size (int* width, int* height);
 static void call_termios(int reset);
+static void create_map (struct map* this_map);
+static void destroy_map (struct map* this_map);
+static void destroy_objects(struct moving_object** objects);
+
+static struct moving_object** objects;
+static int number_of_objects = 0;
+
+static struct map* this_map;
 
 void init_game()
 {
@@ -15,6 +22,31 @@ void end_game()
 	call_termios(1);
 	printf("\e[?25h");
 	printf("\e[1;1H\e[2J");
+}
+void select_new_map(struct map* new_map){
+	free(this_map);
+	this_map = new_map;
+}
+struct moving_object* init_moving_object(int x, int y, char texture)
+{
+	static int objects_size = 0;
+	if (number_of_objects == objects_size){
+		objects_size += 5;
+		if (objects == NULL){
+			objects = (struct moving_object**) malloc (sizeof(struct moving_object*)*objects_size);
+		} else {
+			void ** temp = (void**)objects;
+			objects = (struct moving_object**) realloc (temp, sizeof(struct moving_object*)*objects_size);
+		}
+	}
+	objects[number_of_objects] = (struct moving_object*) malloc (sizeof(struct moving_object));
+	objects[number_of_objects]->pos_x = x;
+	objects[number_of_objects]->pos_y = y;
+	objects[number_of_objects]->texture = texture;
+
+	move_to_pos(objects[number_of_objects], this_map, x, y);		
+
+	return objects[number_of_objects++];
 }
 
 static void call_termios(int reset)
@@ -30,18 +62,32 @@ static void call_termios(int reset)
 		tcsetattr(STDIN_FILENO, TCSANOW, &tio);
 	}
 }
-
-char* move_to_pos(int x, int y)
+int handle_user_input(int* x, int* y)
 {
+	int blob = getchar();
+	if( blob == '0' ) return -1;	
+	if( blob == 'w' && *x > 1 ) (*x)--;
+	if( blob == 'a' && *y > 1 ) (*y)--;
+	if( blob == 's' && *x < this_map->height-2 ) (*x)++;
+	if( blob == 'd' && *y < this_map->width-2 ) (*y)++;
+
+	return 0;
+}
+char* move_to_pos (struct moving_object* object, struct map* this_map, int new_x, int new_y)
+{
+	object->pos_x = new_x;
+	object->pos_y = new_y;
+	new_x++;
+	new_y++;
 	static int old_x = 2, old_y = 2;
 	static char ret [100];
 	sprintf(ret, "\033[%i;%iH", old_x, old_y);
 	printf("%s%c", ret, this_map->fields[old_x-1][old_y-1].init_texture);
-	sprintf(ret, "\033[%i;%iH", x, y);
-	printf("%so", ret);
+	sprintf(ret, "\033[%i;%iH", new_x, new_y);
+	printf("%s%c", ret, object->texture);
 	fflush(stdout);
-	old_x = x;
-	old_y = y;
+	old_x = new_x;
+	old_y = new_y;
 	return ret;
 }
 struct map* init_map ()
@@ -58,7 +104,7 @@ struct map* init_map ()
 	create_map(this_map);
 	return this_map;
 }
-void create_map (struct map* this_map)
+static void create_map (struct map* this_map)
 {
 	int i, j;
 	for (i = 0; i < this_map->height-1; ++i){
@@ -90,7 +136,11 @@ void create_map (struct map* this_map)
 		}
 	}
 }
-void destroy_map (struct map* this_map)
+void free_memory (){
+	destroy_map(this_map);
+	destroy_objects(objects);
+}
+static void destroy_map (struct map* this_map)
 {
 	for (int i = 0; i < this_map->height; ++i){
 		free(this_map->fields[i]);
@@ -98,6 +148,14 @@ void destroy_map (struct map* this_map)
 	free(this_map->fields);
 	free(this_map);
 }
+static void destroy_objects(struct moving_object** objects)
+{
+	for (int i = 0; i < number_of_objects; ++i){
+		free(objects[i]);
+	}
+	free(objects);
+}
+
 void print_map(struct map * this_map)
 {
 	int i, j;
@@ -117,4 +175,5 @@ static void get_window_size (int* width, int* height){
 	ioctl(STDOUT_FILENO, TIOCGWINSZ, &size);
 	*width = size.ws_col;
 	*height = size.ws_row;
+	printf("width: %i height: %i\n", *width, *height);
 }

@@ -6,18 +6,14 @@ int main(int argc, char const *argv[])
 	init_game();
 	struct map* this_map = init_map();
 	print_map(this_map);
-	int x = 2, y = 2;
-	move_to_pos(x, y);
+	struct moving_object* jeffrey = init_moving_object(1,1,'o');
 	while(1){
-		int blob = getchar();
-		if( blob == 48 ) break;	
-		if( blob == 'w') x--;
-		if( blob == 'a') y--;
-		if( blob == 's') x++;
-		if( blob == 'd') y++;
-		move_to_pos(x,y);
+		int x = jeffrey->pos_x;
+		int y = jeffrey->pos_y;
+		if(handle_user_input(&x, &y) == -1) break;
+		move_to_pos(jeffrey, this_map, x, y);
 	}
-	destroy_map(this_map);
+	free_memory();
 	end_game();
 	return 0;
 }

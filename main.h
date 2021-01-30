@@ -5,6 +5,12 @@
 #include <stdlib.h>
 
 //#include <fcntl.h>
+struct moving_object {
+	int pos_x;
+	int pos_y;
+	char texture;
+};
+
 struct map {
 	struct field ** fields;
 	int width, height;
@@ -15,16 +21,18 @@ struct field {
 	char init_texture;
 };
 
-void init_game();
+struct moving_object* init_moving_object (int x, int y, char texture);
 
-void end_game();
+void init_game ();
 
-char* move_to_pos(int x, int y);
+void end_game ();
 
-void print_map();
+char* move_to_pos (struct moving_object* object, struct map* this_map, int new_x, int new_y);
+
+void print_map ();
 
 struct map* init_map ();
 
-void destroy_map (struct map* this_map);
+void free_memory ();
 
-void create_map (struct map* this_map);
+int handle_user_input ();

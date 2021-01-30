@@ -11,19 +11,20 @@ struct map {
 };
 
 struct field {
-	char texture;
+	char curr_texture;
+	char init_texture;
 };
 
-void call_termios(int reset);
+void init_game();
+
+void end_game();
 
 char* move_to_pos(int x, int y);
 
 void print_map();
 
-struct map* init_map (int width, int height);
+struct map* init_map ();
 
 void destroy_map (struct map* this_map);
 
 void create_map (struct map* this_map);
-
-void get_window_size ();

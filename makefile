@@ -1,5 +1,5 @@
 CC:=clang $(clang)
-CFLAGS+=-O2
+CFLAGS+=-O2 -g -Wall
 OBJS=$(patsubst %.c,%.o,$(wildcard *.c))
 TARGET=game
 bin: $(TARGET)

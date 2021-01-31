@@ -10,6 +10,7 @@ static struct moving_object** objects;
 static int number_of_objects = 0;
 
 static struct map* this_map;
+static struct moving_object* user_object;
 
 void init_game()
 {
@@ -27,7 +28,7 @@ void select_new_map(struct map* new_map){
 	free(this_map);
 	this_map = new_map;
 }
-struct moving_object* init_moving_object(int x, int y, char texture)
+struct moving_object* init_moving_object(int x, int y, char texture, int user)
 {
 	static int objects_size = 0;
 	if (number_of_objects == objects_size){
@@ -44,7 +45,12 @@ struct moving_object* init_moving_object(int x, int y, char texture)
 	objects[number_of_objects]->pos_y = y;
 	objects[number_of_objects]->texture = texture;
 
-	move_to_pos(objects[number_of_objects], this_map, x, y);		
+	
+
+	if (user){
+		user_object = objects[number_of_objects];
+		move_to_pos();
+	}	
 
 	return objects[number_of_objects++];
 }
@@ -62,21 +68,23 @@ static void call_termios(int reset)
 		tcsetattr(STDIN_FILENO, TCSANOW, &tio);
 	}
 }
-int handle_user_input(int* x, int* y)
+int handle_user_input()
 {
 	int blob = getchar();
 	if( blob == '0' ) return -1;	
-	if( blob == 'w' && *x > 1 ) (*x)--;
-	if( blob == 'a' && *y > 1 ) (*y)--;
-	if( blob == 's' && *x < this_map->height-2 ) (*x)++;
-	if( blob == 'd' && *y < this_map->width-2 ) (*y)++;
+	if( blob == 'w' && user_object->pos_x > 1 ) (user_object->pos_x)--;
+	if( blob == 'a' && user_object->pos_y > 1 ) (user_object->pos_y)--;
+	if( blob == 's' && user_object->pos_x < this_map->height-2 ) (user_object->pos_x)++;
+	if( blob == 'd' && user_object->pos_y < this_map->width-2 ) (user_object->pos_y)++;
+
+	move_to_pos();
 
 	return 0;
 }
-char* move_to_pos (struct moving_object* object, struct map* this_map, int new_x, int new_y)
+char* move_to_pos ()
 {
-	object->pos_x = new_x;
-	object->pos_y = new_y;
+	int new_x = user_object->pos_x;
+	int new_y = user_object->pos_y;
 	new_x++;
 	new_y++;
 	static int old_x = 2, old_y = 2;
@@ -84,7 +92,7 @@ char* move_to_pos (struct moving_object* object, struct map* this_map, int new_x
 	sprintf(ret, "\033[%i;%iH", old_x, old_y);
 	printf("%s%c", ret, this_map->fields[old_x-1][old_y-1].init_texture);
 	sprintf(ret, "\033[%i;%iH", new_x, new_y);
-	printf("%s%c", ret, object->texture);
+	printf("%s%c", ret, user_object->texture);
 	fflush(stdout);
 	old_x = new_x;
 	old_y = new_y;
@@ -95,7 +103,7 @@ struct map* init_map ()
 	this_map = (struct map*) malloc (sizeof(struct map));
 	int width, height;
 	get_window_size(&width, &height);
-	this_map->width = width;
+	this_map->width = width-1;
 	this_map->height = height;
 	this_map->fields = (struct field**) malloc (sizeof(struct field*)*height);
 	for (int i = 0; i < height; ++i){
@@ -156,14 +164,14 @@ static void destroy_objects(struct moving_object** objects)
 	free(objects);
 }
 
-void print_map(struct map * this_map)
+void print_map()
 {
 	int i, j;
 	for (i = 0; i < this_map->height-1; ++i){
 		for (j = 0; j < this_map->width; ++j){
 			putchar(this_map->fields[i][j].curr_texture);
 		}
-		printf("\n");
+		putchar('\n');
 	}
 	for (j = 0; j < this_map->width; ++j){
 		putchar(this_map->fields[i][j].curr_texture);

@@ -21,13 +21,13 @@ struct field {
 	char init_texture;
 };
 
-struct moving_object* init_moving_object (int x, int y, char texture);
+struct moving_object* init_moving_object (int x, int y, char texture, int user);
 
 void init_game ();
 
 void end_game ();
 
-char* move_to_pos (struct moving_object* object, struct map* this_map, int new_x, int new_y);
+char* move_to_pos ();
 
 void print_map ();
 

@@ -9,8 +9,21 @@ static void destroy_objects(struct moving_object** objects);
 static struct moving_object** objects;
 static int number_of_objects = 0;
 
-static struct map* this_map;
 static struct moving_object* user_object;
+
+static struct map* this_map;
+/*
+ *   1
+ * 2   3
+ *   4
+*/
+static int direction = 4;
+int get_direction(){
+	return direction;
+}
+struct map* get_map(){
+	return this_map;
+}
 
 void init_game()
 {
@@ -55,6 +68,7 @@ struct moving_object* init_moving_object(int x, int y, char texture, int user)
 	return objects[number_of_objects++];
 }
 
+
 static void call_termios(int reset)
 {
 	static struct termios tio, tioOld;
@@ -68,19 +82,33 @@ static void call_termios(int reset)
 		tcsetattr(STDIN_FILENO, TCSANOW, &tio);
 	}
 }
-int handle_user_input()
+void* handle_user_input()
 {
-	int blob = getchar();
-	if( blob == '0' ) return -1;	
-	if( blob == 'w' && user_object->pos_x > 1 ) (user_object->pos_x)--;
-	if( blob == 'a' && user_object->pos_y > 1 ) (user_object->pos_y)--;
-	if( blob == 's' && user_object->pos_x < this_map->height-2 ) (user_object->pos_x)++;
-	if( blob == 'd' && user_object->pos_y < this_map->width-2 ) (user_object->pos_y)++;
+	// while(1){
+	// 	int blob = getchar();
+	// 	if( blob == '0' ) break;	
+	// 	if( blob == 'w' && user_object->pos_x > 1 ) (user_object->pos_x)--;
+	// 	if( blob == 'a' && user_object->pos_y > 1 ) (user_object->pos_y)--;
+	// 	if( blob == 's' && user_object->pos_x < this_map->height-2 ) (user_object->pos_x)++;
+	// 	if( blob == 'd' && user_object->pos_y < this_map->width-2 ) (user_object->pos_y)++;
 
-	move_to_pos();
+	// 	move_to_pos();
+	// }
 
-	return 0;
+	while(1){
+		int blob = getchar();
+		if( blob == '0' ) break;	
+		if( blob == 'w' ) direction = 1;
+		if( blob == 'a' ) direction = 2;
+		if( blob == 's' ) direction = 3;
+		if( blob == 'd' ) direction = 4;
+	}
+
+	pthread_mutex_unlock(&mut_game_terminated);
+
+	return NULL;
 }
+
 char* move_to_pos ()
 {
 	int new_x = user_object->pos_x;
@@ -90,7 +118,7 @@ char* move_to_pos ()
 	static int old_x = 2, old_y = 2;
 	static char ret [100];
 	sprintf(ret, "\033[%i;%iH", old_x, old_y);
-	printf("%s%c", ret, this_map->fields[old_x-1][old_y-1].init_texture);
+	printf("%s%c", ret, this_map->fields[old_x-1][old_y-1]->init_texture);
 	sprintf(ret, "\033[%i;%iH", new_x, new_y);
 	printf("%s%c", ret, user_object->texture);
 	fflush(stdout);
@@ -105,9 +133,12 @@ struct map* init_map ()
 	get_window_size(&width, &height);
 	this_map->width = width-1;
 	this_map->height = height;
-	this_map->fields = (struct field**) malloc (sizeof(struct field*)*height);
-	for (int i = 0; i < height; ++i){
-		this_map->fields[i] = (struct field *) malloc (sizeof(struct field)*width);
+	this_map->fields = (struct field***) malloc (sizeof(struct field**)*height);
+	for (int i = 0; i < this_map->height; ++i){
+		this_map->fields[i] = (struct field **) malloc (sizeof(struct field*)*this_map->width);
+		for (int j = 0; j < this_map->width; ++j){
+			this_map->fields[i][j] = (struct field*) malloc (sizeof(struct field));
+		}
 	}
 	create_map(this_map);
 	return this_map;
@@ -117,40 +148,45 @@ static void create_map (struct map* this_map)
 	int i, j;
 	for (i = 0; i < this_map->height-1; ++i){
 		for (j = 0; j < this_map->width; ++j){
+			this_map->fields[i][j]->id = i*this_map->width+j;
 			if(i == 0){
-				this_map->fields[i][j].init_texture = '-';
-				this_map->fields[i][j].curr_texture = '-';
+				this_map->fields[i][j]->init_texture = '-';
+				this_map->fields[i][j]->curr_texture = '-';
 				if( (j == 0) || (j == this_map->width-1)){
-					this_map->fields[i][j].init_texture = '*';
-					this_map->fields[i][j].curr_texture = '*';
+					this_map->fields[i][j]->init_texture = '*';
+					this_map->fields[i][j]->curr_texture = '*';
 				}
 			} else if( (j == 0) || (j == this_map->width-1)){
-				this_map->fields[i][j].init_texture = '|';
-				this_map->fields[i][j].curr_texture = '|';
+				this_map->fields[i][j]->init_texture = '|';
+				this_map->fields[i][j]->curr_texture = '|';
 			} else {
-				this_map->fields[i][j].init_texture = '.';
-				this_map->fields[i][j].curr_texture = '.';
+				this_map->fields[i][j]->init_texture = '.';
+				this_map->fields[i][j]->curr_texture = '.';
 			}
 		}
-		//this_map->fields[i][j].texture = '\n';
+		//this_map->fields[i][j]->texture = '\n';
 	}
 	for (j = 0; j < this_map->width; ++j){
 		if ( (j == 0) || (j == this_map->width-1) ){
-			this_map->fields[i][j].init_texture = '*';
-			this_map->fields[i][j].curr_texture = '*';
+			this_map->fields[i][j]->init_texture = '*';
+			this_map->fields[i][j]->curr_texture = '*';
 		} else {
-			this_map->fields[i][j].init_texture = '-';
-			this_map->fields[i][j].curr_texture = '-';
+			this_map->fields[i][j]->init_texture = '-';
+			this_map->fields[i][j]->curr_texture = '-';
 		}
 	}
 }
 void free_memory (){
 	destroy_map(this_map);
 	destroy_objects(objects);
+	free_jeffrey();
 }
 static void destroy_map (struct map* this_map)
 {
 	for (int i = 0; i < this_map->height; ++i){
+		for (int j = 0; j < this_map->width; ++j){
+			free(this_map->fields[i][j]);
+		}
 		free(this_map->fields[i]);
 	}
 	free(this_map->fields);
@@ -169,12 +205,12 @@ void print_map()
 	int i, j;
 	for (i = 0; i < this_map->height-1; ++i){
 		for (j = 0; j < this_map->width; ++j){
-			putchar(this_map->fields[i][j].curr_texture);
+			putchar(this_map->fields[i][j]->curr_texture);
 		}
 		putchar('\n');
 	}
 	for (j = 0; j < this_map->width; ++j){
-		putchar(this_map->fields[i][j].curr_texture);
+		putchar(this_map->fields[i][j]->curr_texture);
 	}
 	fflush(stdout);
 }

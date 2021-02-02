@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <sys/ioctl.h> //ioctl() and TIOCGWINSZ
 #include <unistd.h> // for STDOUT_FILENO
+#include <time.h>
 
 
 void tryCursorMovement()
@@ -64,6 +65,10 @@ int main(int argc, char const *argv[])
 	printf("%i %i\n", i, j);
 	
 	//printBlocks();
-	//while(1);
+	while(1){
+		
+		
+		sleep(1);
+	}
 	return 0;
 }

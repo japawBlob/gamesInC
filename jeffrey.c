@@ -76,7 +76,7 @@ static void print_jeffrey ()
 		temp = temp->next_part;
 	}
 	fprintf(f, "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
-
+/*
 	fprintf(f, "FROM BACK\n");
  	temp = jeffrey->snake_tail;
 	while(temp!=NULL){
@@ -87,7 +87,7 @@ static void print_jeffrey ()
 		fprintf(f, "------------------------------------------------------\n");
 		temp = temp->prev_part;
 	}
-	fprintf(f, "=========================================================\n");
+	fprintf(f, "=========================================================\n");*/
 }
 
 int move_jeffrey()
@@ -109,7 +109,7 @@ int move_jeffrey()
 	   !( 0 < jeffrey->snake_head->part_pos_y && jeffrey->snake_head->part_pos_y < get_map()->width-1)){
 		return -1;
 	}
-
+	jeffrey->snake_head->occupied_field = get_map()->fields[jeffrey->snake_head->part_pos_x][jeffrey->snake_head->part_pos_y];
 	//update_jeffrey_position();
 	show_jeffrey ();
 	print_jeffrey ();
@@ -117,14 +117,19 @@ int move_jeffrey()
 }
 static void move_snake_body ()
 {
+	int leaved_x = jeffrey->snake_tail->part_pos_x;
+	int leaved_y = jeffrey->snake_tail->part_pos_y;
 	struct snake_part* temp = jeffrey->snake_tail;
 	while(temp->prev_part != NULL){
 		temp->occupied_field->type--;
 		temp->part_pos_x = temp->prev_part->part_pos_x;
 		temp->part_pos_y = temp->prev_part->part_pos_y;
+		temp->occupied_field = temp->prev_part->occupied_field;
 		temp = temp->prev_part;
 	}
-	
+	static char ret [100];
+	sprintf(ret, "\033[%i;%iH", leaved_x+1, leaved_y+1);
+	printf("%s%c", ret, get_map()->fields[leaved_x][leaved_y]->init_texture);
 	/*if (pos == 'x'){
 		jeffrey->snake_head->part_pos_x += incremet;
 		struct snake_part temp = jeffrey->snake_head->next_part;

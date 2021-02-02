@@ -149,6 +149,7 @@ static void create_map (struct map* this_map)
 	for (i = 0; i < this_map->height-1; ++i){
 		for (j = 0; j < this_map->width; ++j){
 			this_map->fields[i][j]->id = i*this_map->width+j;
+			this_map->fields[i][j]->type = 0;
 			if(i == 0){
 				this_map->fields[i][j]->init_texture = '-';
 				this_map->fields[i][j]->curr_texture = '-';

@@ -26,7 +26,7 @@ void init_jeffrey(x, y)
 	jeffrey->snake_head->next_part = NULL;
 	jeffrey->snake_head->prev_part = NULL;
 	jeffrey->snake_head->occupied_field = get_map()->fields[x][y];
-	jeffrey->snake_head->occupied_field->type = jeffrey->length;
+	jeffrey->snake_head->occupied_field->type = SNAKE_FIELD;
 	jeffrey->snake_head->occupied_field->curr_texture = jeffrey->head_texture;
 	struct snake_part* temp = jeffrey->snake_head;	
 	for (int i = jeffrey->length-1; i > 0; i--){
@@ -35,7 +35,7 @@ void init_jeffrey(x, y)
 		temp->next_part->part_pos_x = x;
 		temp->next_part->part_pos_y = --y;
 		temp->next_part->occupied_field = get_map()->fields[x][y];
-		temp->next_part->occupied_field->type = i;
+		temp->next_part->occupied_field->type = SNAKE_FIELD;
 		temp->next_part->occupied_field->curr_texture = jeffrey->body_texture;
 		temp->next_part->prev_part = temp;
 		temp->next_part->next_part = NULL;
@@ -44,12 +44,35 @@ void init_jeffrey(x, y)
 	jeffrey->snake_tail = temp;
 	print_jeffrey();
 	show_jeffrey();
-
+}
+void add_snake_part ()
+{
+	jeffrey->length++;
+	jeffrey->snake_head->prev_part = (struct snake_part *) malloc (sizeof(struct snake_part));
+	jeffrey->snake_head->prev_part->next_part = jeffrey->snake_head;
+	jeffrey->snake_head->occupied_field->curr_texture = jeffrey->body_texture;
+	jeffrey->snake_head = jeffrey->snake_head->prev_part;
+	jeffrey->snake_head->prev_part = NULL;
+	jeffrey->snake_head->position_in_body = jeffrey->length;
+	jeffrey->snake_head->part_pos_x = jeffrey->snake_head->next_part->part_pos_x;
+	jeffrey->snake_head->part_pos_y = jeffrey->snake_head->next_part->part_pos_y;
+	if (get_direction() == 1){
+		jeffrey->snake_head->part_pos_x--;
+	} else if (get_direction() == 2){
+		jeffrey->snake_head->part_pos_y--;
+	} else if (get_direction() == 3){
+		jeffrey->snake_head->part_pos_x++;
+	} else if (get_direction() == 4){
+		jeffrey->snake_head->part_pos_y++;
+	}
+	jeffrey->snake_head->occupied_field = get_map()->fields[jeffrey->snake_head->part_pos_x][jeffrey->snake_head->part_pos_y];
+	jeffrey->snake_head->occupied_field->type = SNAKE_FIELD;
+	jeffrey->snake_head->occupied_field->curr_texture = jeffrey->head_texture;
 }
 
 static void show_jeffrey ()
 {
-	char ret [100];
+	/*char ret [100];
 	sprintf(ret, "\033[%i;%iH", jeffrey->snake_head->part_pos_x+1, jeffrey->snake_head->part_pos_y+1);
 	printf("%s%c", ret, jeffrey->head_texture);
 	fflush(stdout);
@@ -60,11 +83,19 @@ static void show_jeffrey ()
 		//printf("%s%i", ret, temp->occupied_field->type);
 		fflush(stdout);
 		temp = temp->next_part;
+	}*/
+	char ret [100];
+	struct snake_part* temp = jeffrey->snake_head;
+	while(temp != NULL){
+		sprintf(ret, "\033[%i;%iH", temp->part_pos_x+1, temp->part_pos_y+1);
+		printf("%s%c", ret, temp->occupied_field->curr_texture);
+		//printf("%s%i", ret, temp->occupied_field->type);
+		fflush(stdout);
+		temp = temp->next_part;
 	}
 }
 static void print_jeffrey ()
 {
-	
 	struct snake_part* temp = jeffrey->snake_head;
 	fprintf(f, "FROM FRONT\n");
 	while(temp!=NULL){
@@ -92,19 +123,7 @@ static void print_jeffrey ()
 
 int move_jeffrey()
 {
-	if (get_direction() == 1){
-		move_snake_body();
-		jeffrey->snake_head->part_pos_x--;
-	} else if (get_direction() == 2){
-		move_snake_body();
-		jeffrey->snake_head->part_pos_y--;
-	} else if (get_direction() == 3){
-		move_snake_body();
-		jeffrey->snake_head->part_pos_x++;
-	} else if (get_direction() == 4){
-		move_snake_body();
-		jeffrey->snake_head->part_pos_y++;
-	}
+	move_snake_body();
 	if(!( 0 < jeffrey->snake_head->part_pos_x && jeffrey->snake_head->part_pos_x < get_map()->height-1) ||
 	   !( 0 < jeffrey->snake_head->part_pos_y && jeffrey->snake_head->part_pos_y < get_map()->width-1)){
 		return -1;
@@ -121,15 +140,28 @@ static void move_snake_body ()
 	int leaved_y = jeffrey->snake_tail->part_pos_y;
 	struct snake_part* temp = jeffrey->snake_tail;
 	while(temp->prev_part != NULL){
-		temp->occupied_field->type--;
 		temp->part_pos_x = temp->prev_part->part_pos_x;
 		temp->part_pos_y = temp->prev_part->part_pos_y;
 		temp->occupied_field = temp->prev_part->occupied_field;
+		temp->occupied_field->curr_texture = jeffrey->body_texture;
 		temp = temp->prev_part;
 	}
+	if (get_direction() == 1){
+		temp->part_pos_x--;
+	} else if (get_direction() == 2){
+		temp->part_pos_y--;
+	} else if (get_direction() == 3){
+		temp->part_pos_x++;
+	} else if (get_direction() == 4){
+		temp->part_pos_y++;
+	}
+	temp->occupied_field = get_map()->fields[temp->part_pos_x][temp->part_pos_y];
+	temp->occupied_field->curr_texture = jeffrey->head_texture;
 	static char ret [100];
 	sprintf(ret, "\033[%i;%iH", leaved_x+1, leaved_y+1);
 	printf("%s%c", ret, get_map()->fields[leaved_x][leaved_y]->init_texture);
+
+
 	/*if (pos == 'x'){
 		jeffrey->snake_head->part_pos_x += incremet;
 		struct snake_part temp = jeffrey->snake_head->next_part;

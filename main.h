@@ -9,6 +9,9 @@
 
 #include <time.h>
 
+#define EMPTY_FIELD (int) 0;
+#define SNAKE_FIELD (int) 1;
+#define APPLE_FIELD (int) 2;
 //#include <fcntl.h>
 struct snake {
 	struct snake_part* snake_head;
@@ -71,5 +74,7 @@ int move_jeffrey();
 void free_jeffrey();
 
 int get_direction();
+
+void add_snake_part ();
 
 struct map* get_map();

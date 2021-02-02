@@ -102,6 +102,7 @@ void* handle_user_input()
 		if( blob == 'a' ) direction = 2;
 		if( blob == 's' ) direction = 3;
 		if( blob == 'd' ) direction = 4;
+		if( blob == 'l' ) add_snake_part();
 	}
 
 	pthread_mutex_unlock(&mut_game_terminated);

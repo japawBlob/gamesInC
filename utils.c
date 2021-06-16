@@ -12,6 +12,7 @@ static int number_of_objects = 0;
 static struct moving_object* user_object;
 
 static struct map* this_map;
+
 /*
  *   1
  * 2   3
@@ -96,20 +97,27 @@ void* handle_user_input()
 	// }
 
 	while(1){
-		int blob = getchar();
+		char blob;
+		read(0,&blob,1);
 		if( blob == '0' ) break;	
 		if( blob == 'w' ) direction = 1;
 		if( blob == 'a' ) direction = 2;
 		if( blob == 's' ) direction = 3;
 		if( blob == 'd' ) direction = 4;
 		if( blob == 'l' ) add_snake_part();
+		if(pthread_mutex_trylock(&mut_game_terminated) == 0){
+			pthread_mutex_unlock(&mut_game_terminated);
+			break;
+		}
 	}
 
 	pthread_mutex_unlock(&mut_game_terminated);
 
 	return NULL;
 }
+void game_over(){
 
+}
 char* move_to_pos ()
 {
 	int new_x = user_object->pos_x;

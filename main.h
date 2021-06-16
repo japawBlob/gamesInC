@@ -78,3 +78,5 @@ int get_direction();
 void add_snake_part ();
 
 struct map* get_map();
+
+void game_over();

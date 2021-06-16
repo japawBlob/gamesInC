@@ -26,13 +26,16 @@ int main(int argc, char const *argv[])
 			}
 			nanos = 1000000000 * time.tv_sec + time.tv_nsec + period;
 		}
-		if(pthread_mutex_trylock(&mut_game_terminated) == 0){	
+		if(pthread_mutex_trylock(&mut_game_terminated) == 0){
+			pthread_mutex_unlock(&mut_game_terminated);	
 			break;
 		}
 	}
+
 	pthread_join(input_thread, NULL);
 	pthread_mutex_destroy(&mut_game_terminated);
 	free_memory();
 	end_game();
+
 	return 0;
 }

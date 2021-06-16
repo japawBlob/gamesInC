@@ -124,8 +124,8 @@ static void print_jeffrey ()
 int move_jeffrey()
 {
 	move_snake_body();
-	if(!( 0 < jeffrey->snake_head->part_pos_x && jeffrey->snake_head->part_pos_x < get_map()->height-1) ||
-	   !( 0 < jeffrey->snake_head->part_pos_y && jeffrey->snake_head->part_pos_y < get_map()->width-1)){
+	if(!( 0 < jeffrey->snake_head->part_pos_x && jeffrey->snake_head->part_pos_x < get_map()->height-1 ) ||
+	   !( 0 < jeffrey->snake_head->part_pos_y && jeffrey->snake_head->part_pos_y < get_map()->width-1 )){
 		return -1;
 	}
 	jeffrey->snake_head->occupied_field = get_map()->fields[jeffrey->snake_head->part_pos_x][jeffrey->snake_head->part_pos_y];
@@ -147,13 +147,18 @@ static void move_snake_body ()
 		temp = temp->prev_part;
 	}
 	if (get_direction() == 1){
-		temp->part_pos_x--;
+		temp->part_pos_x--; 
 	} else if (get_direction() == 2){
 		temp->part_pos_y--;
 	} else if (get_direction() == 3){
 		temp->part_pos_x++;
 	} else if (get_direction() == 4){
 		temp->part_pos_y++;
+	}
+	struct field * new_field = get_map()->fields[temp->part_pos_x][temp->part_pos_y];
+	if(new_field->curr_texture != new_field->init_texture){
+		pthread_mutex_unlock(&mut_game_terminated);
+		return ; 
 	}
 	temp->occupied_field = get_map()->fields[temp->part_pos_x][temp->part_pos_y];
 	temp->occupied_field->curr_texture = jeffrey->head_texture;

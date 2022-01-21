@@ -4,21 +4,21 @@ Field:
 part_pos_x: 5
 part_pos_y: 5
 Field type: 1
-Id: 600
+Id: 525
 ------------------------------------------------------
 Position in body: 2
 Field:
 part_pos_x: 5
 part_pos_y: 4
 Field type: 1
-Id: 599
+Id: 524
 ------------------------------------------------------
 Position in body: 1
 Field:
 part_pos_x: 5
 part_pos_y: 3
 Field type: 1
-Id: 598
+Id: 523
 ------------------------------------------------------
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 FROM FRONT
@@ -27,21 +27,21 @@ Field:
 part_pos_x: 5
 part_pos_y: 6
 Field type: 0
-Id: 601
+Id: 526
 ------------------------------------------------------
 Position in body: 2
 Field:
 part_pos_x: 5
 part_pos_y: 5
 Field type: 1
-Id: 600
+Id: 525
 ------------------------------------------------------
 Position in body: 1
 Field:
 part_pos_x: 5
 part_pos_y: 4
 Field type: 1
-Id: 599
+Id: 524
 ------------------------------------------------------
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 FROM FRONT
@@ -50,21 +50,21 @@ Field:
 part_pos_x: 5
 part_pos_y: 7
 Field type: 0
-Id: 602
+Id: 527
 ------------------------------------------------------
 Position in body: 2
 Field:
 part_pos_x: 5
 part_pos_y: 6
 Field type: 0
-Id: 601
+Id: 526
 ------------------------------------------------------
 Position in body: 1
 Field:
 part_pos_x: 5
 part_pos_y: 5
 Field type: 1
-Id: 600
+Id: 525
 ------------------------------------------------------
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 FROM FRONT
@@ -73,838 +73,134 @@ Field:
 part_pos_x: 5
 part_pos_y: 8
 Field type: 0
-Id: 603
+Id: 528
 ------------------------------------------------------
 Position in body: 2
 Field:
 part_pos_x: 5
 part_pos_y: 7
 Field type: 0
-Id: 602
+Id: 527
 ------------------------------------------------------
 Position in body: 1
 Field:
 part_pos_x: 5
 part_pos_y: 6
 Field type: 0
-Id: 601
+Id: 526
 ------------------------------------------------------
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 FROM FRONT
 Position in body: 3
 Field:
-part_pos_x: 5
-part_pos_y: 9
+part_pos_x: 6
+part_pos_y: 8
 Field type: 0
-Id: 604
+Id: 632
 ------------------------------------------------------
 Position in body: 2
 Field:
 part_pos_x: 5
 part_pos_y: 8
 Field type: 0
-Id: 603
+Id: 528
 ------------------------------------------------------
 Position in body: 1
 Field:
 part_pos_x: 5
 part_pos_y: 7
 Field type: 0
-Id: 602
+Id: 527
 ------------------------------------------------------
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 FROM FRONT
-Position in body: 6
-Field:
-part_pos_x: 5
-part_pos_y: 13
-Field type: 0
-Id: 608
-------------------------------------------------------
-Position in body: 5
-Field:
-part_pos_x: 5
-part_pos_y: 12
-Field type: 1
-Id: 607
-------------------------------------------------------
-Position in body: 4
-Field:
-part_pos_x: 5
-part_pos_y: 11
-Field type: 1
-Id: 606
-------------------------------------------------------
 Position in body: 3
 Field:
-part_pos_x: 5
-part_pos_y: 10
-Field type: 1
-Id: 605
+part_pos_x: 7
+part_pos_y: 8
+Field type: 0
+Id: 736
 ------------------------------------------------------
 Position in body: 2
 Field:
-part_pos_x: 5
-part_pos_y: 9
+part_pos_x: 6
+part_pos_y: 8
 Field type: 0
-Id: 604
+Id: 632
 ------------------------------------------------------
 Position in body: 1
 Field:
 part_pos_x: 5
 part_pos_y: 8
 Field type: 0
-Id: 603
+Id: 528
 ------------------------------------------------------
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 FROM FRONT
-Position in body: 9
-Field:
-part_pos_x: 5
-part_pos_y: 17
-Field type: 0
-Id: 612
-------------------------------------------------------
-Position in body: 8
-Field:
-part_pos_x: 5
-part_pos_y: 16
-Field type: 1
-Id: 611
-------------------------------------------------------
-Position in body: 7
-Field:
-part_pos_x: 5
-part_pos_y: 15
-Field type: 1
-Id: 610
-------------------------------------------------------
-Position in body: 6
-Field:
-part_pos_x: 5
-part_pos_y: 14
-Field type: 1
-Id: 609
-------------------------------------------------------
-Position in body: 5
-Field:
-part_pos_x: 5
-part_pos_y: 13
-Field type: 0
-Id: 608
-------------------------------------------------------
-Position in body: 4
-Field:
-part_pos_x: 5
-part_pos_y: 12
-Field type: 1
-Id: 607
-------------------------------------------------------
 Position in body: 3
 Field:
-part_pos_x: 5
-part_pos_y: 11
-Field type: 1
-Id: 606
+part_pos_x: 8
+part_pos_y: 8
+Field type: 0
+Id: 840
 ------------------------------------------------------
 Position in body: 2
-Field:
-part_pos_x: 5
-part_pos_y: 10
-Field type: 1
-Id: 605
-------------------------------------------------------
-Position in body: 1
-Field:
-part_pos_x: 5
-part_pos_y: 9
-Field type: 0
-Id: 604
-------------------------------------------------------
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-FROM FRONT
-Position in body: 12
-Field:
-part_pos_x: 5
-part_pos_y: 21
-Field type: 0
-Id: 616
-------------------------------------------------------
-Position in body: 11
-Field:
-part_pos_x: 5
-part_pos_y: 20
-Field type: 1
-Id: 615
-------------------------------------------------------
-Position in body: 10
-Field:
-part_pos_x: 5
-part_pos_y: 19
-Field type: 1
-Id: 614
-------------------------------------------------------
-Position in body: 9
-Field:
-part_pos_x: 5
-part_pos_y: 18
-Field type: 1
-Id: 613
-------------------------------------------------------
-Position in body: 8
-Field:
-part_pos_x: 5
-part_pos_y: 17
-Field type: 0
-Id: 612
-------------------------------------------------------
-Position in body: 7
-Field:
-part_pos_x: 5
-part_pos_y: 16
-Field type: 1
-Id: 611
-------------------------------------------------------
-Position in body: 6
-Field:
-part_pos_x: 5
-part_pos_y: 15
-Field type: 1
-Id: 610
-------------------------------------------------------
-Position in body: 5
-Field:
-part_pos_x: 5
-part_pos_y: 14
-Field type: 1
-Id: 609
-------------------------------------------------------
-Position in body: 4
-Field:
-part_pos_x: 5
-part_pos_y: 13
-Field type: 0
-Id: 608
-------------------------------------------------------
-Position in body: 3
-Field:
-part_pos_x: 5
-part_pos_y: 12
-Field type: 1
-Id: 607
-------------------------------------------------------
-Position in body: 2
-Field:
-part_pos_x: 5
-part_pos_y: 11
-Field type: 1
-Id: 606
-------------------------------------------------------
-Position in body: 1
-Field:
-part_pos_x: 5
-part_pos_y: 10
-Field type: 1
-Id: 605
-------------------------------------------------------
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-FROM FRONT
-Position in body: 14
-Field:
-part_pos_x: 5
-part_pos_y: 24
-Field type: 0
-Id: 619
-------------------------------------------------------
-Position in body: 13
-Field:
-part_pos_x: 5
-part_pos_y: 23
-Field type: 1
-Id: 618
-------------------------------------------------------
-Position in body: 12
-Field:
-part_pos_x: 5
-part_pos_y: 22
-Field type: 1
-Id: 617
-------------------------------------------------------
-Position in body: 11
-Field:
-part_pos_x: 5
-part_pos_y: 21
-Field type: 0
-Id: 616
-------------------------------------------------------
-Position in body: 10
-Field:
-part_pos_x: 5
-part_pos_y: 20
-Field type: 1
-Id: 615
-------------------------------------------------------
-Position in body: 9
-Field:
-part_pos_x: 5
-part_pos_y: 19
-Field type: 1
-Id: 614
-------------------------------------------------------
-Position in body: 8
-Field:
-part_pos_x: 5
-part_pos_y: 18
-Field type: 1
-Id: 613
-------------------------------------------------------
-Position in body: 7
-Field:
-part_pos_x: 5
-part_pos_y: 17
-Field type: 0
-Id: 612
-------------------------------------------------------
-Position in body: 6
-Field:
-part_pos_x: 5
-part_pos_y: 16
-Field type: 1
-Id: 611
-------------------------------------------------------
-Position in body: 5
-Field:
-part_pos_x: 5
-part_pos_y: 15
-Field type: 1
-Id: 610
-------------------------------------------------------
-Position in body: 4
-Field:
-part_pos_x: 5
-part_pos_y: 14
-Field type: 1
-Id: 609
-------------------------------------------------------
-Position in body: 3
-Field:
-part_pos_x: 5
-part_pos_y: 13
-Field type: 0
-Id: 608
-------------------------------------------------------
-Position in body: 2
-Field:
-part_pos_x: 5
-part_pos_y: 12
-Field type: 1
-Id: 607
-------------------------------------------------------
-Position in body: 1
-Field:
-part_pos_x: 5
-part_pos_y: 11
-Field type: 1
-Id: 606
-------------------------------------------------------
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-FROM FRONT
-Position in body: 14
-Field:
-part_pos_x: 6
-part_pos_y: 24
-Field type: 0
-Id: 738
-------------------------------------------------------
-Position in body: 13
-Field:
-part_pos_x: 5
-part_pos_y: 24
-Field type: 0
-Id: 619
-------------------------------------------------------
-Position in body: 12
-Field:
-part_pos_x: 5
-part_pos_y: 23
-Field type: 1
-Id: 618
-------------------------------------------------------
-Position in body: 11
-Field:
-part_pos_x: 5
-part_pos_y: 22
-Field type: 1
-Id: 617
-------------------------------------------------------
-Position in body: 10
-Field:
-part_pos_x: 5
-part_pos_y: 21
-Field type: 0
-Id: 616
-------------------------------------------------------
-Position in body: 9
-Field:
-part_pos_x: 5
-part_pos_y: 20
-Field type: 1
-Id: 615
-------------------------------------------------------
-Position in body: 8
-Field:
-part_pos_x: 5
-part_pos_y: 19
-Field type: 1
-Id: 614
-------------------------------------------------------
-Position in body: 7
-Field:
-part_pos_x: 5
-part_pos_y: 18
-Field type: 1
-Id: 613
-------------------------------------------------------
-Position in body: 6
-Field:
-part_pos_x: 5
-part_pos_y: 17
-Field type: 0
-Id: 612
-------------------------------------------------------
-Position in body: 5
-Field:
-part_pos_x: 5
-part_pos_y: 16
-Field type: 1
-Id: 611
-------------------------------------------------------
-Position in body: 4
-Field:
-part_pos_x: 5
-part_pos_y: 15
-Field type: 1
-Id: 610
-------------------------------------------------------
-Position in body: 3
-Field:
-part_pos_x: 5
-part_pos_y: 14
-Field type: 1
-Id: 609
-------------------------------------------------------
-Position in body: 2
-Field:
-part_pos_x: 5
-part_pos_y: 13
-Field type: 0
-Id: 608
-------------------------------------------------------
-Position in body: 1
-Field:
-part_pos_x: 5
-part_pos_y: 12
-Field type: 1
-Id: 607
-------------------------------------------------------
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-FROM FRONT
-Position in body: 14
 Field:
 part_pos_x: 7
-part_pos_y: 24
+part_pos_y: 8
 Field type: 0
-Id: 857
-------------------------------------------------------
-Position in body: 13
-Field:
-part_pos_x: 6
-part_pos_y: 24
-Field type: 0
-Id: 738
-------------------------------------------------------
-Position in body: 12
-Field:
-part_pos_x: 5
-part_pos_y: 24
-Field type: 0
-Id: 619
-------------------------------------------------------
-Position in body: 11
-Field:
-part_pos_x: 5
-part_pos_y: 23
-Field type: 1
-Id: 618
-------------------------------------------------------
-Position in body: 10
-Field:
-part_pos_x: 5
-part_pos_y: 22
-Field type: 1
-Id: 617
-------------------------------------------------------
-Position in body: 9
-Field:
-part_pos_x: 5
-part_pos_y: 21
-Field type: 0
-Id: 616
-------------------------------------------------------
-Position in body: 8
-Field:
-part_pos_x: 5
-part_pos_y: 20
-Field type: 1
-Id: 615
-------------------------------------------------------
-Position in body: 7
-Field:
-part_pos_x: 5
-part_pos_y: 19
-Field type: 1
-Id: 614
-------------------------------------------------------
-Position in body: 6
-Field:
-part_pos_x: 5
-part_pos_y: 18
-Field type: 1
-Id: 613
-------------------------------------------------------
-Position in body: 5
-Field:
-part_pos_x: 5
-part_pos_y: 17
-Field type: 0
-Id: 612
-------------------------------------------------------
-Position in body: 4
-Field:
-part_pos_x: 5
-part_pos_y: 16
-Field type: 1
-Id: 611
-------------------------------------------------------
-Position in body: 3
-Field:
-part_pos_x: 5
-part_pos_y: 15
-Field type: 1
-Id: 610
-------------------------------------------------------
-Position in body: 2
-Field:
-part_pos_x: 5
-part_pos_y: 14
-Field type: 1
-Id: 609
+Id: 736
 ------------------------------------------------------
 Position in body: 1
 Field:
-part_pos_x: 5
-part_pos_y: 13
+part_pos_x: 6
+part_pos_y: 8
 Field type: 0
-Id: 608
+Id: 632
 ------------------------------------------------------
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 FROM FRONT
-Position in body: 14
-Field:
-part_pos_x: 7
-part_pos_y: 23
-Field type: 0
-Id: 856
-------------------------------------------------------
-Position in body: 13
-Field:
-part_pos_x: 7
-part_pos_y: 24
-Field type: 0
-Id: 857
-------------------------------------------------------
-Position in body: 12
-Field:
-part_pos_x: 6
-part_pos_y: 24
-Field type: 0
-Id: 738
-------------------------------------------------------
-Position in body: 11
-Field:
-part_pos_x: 5
-part_pos_y: 24
-Field type: 0
-Id: 619
-------------------------------------------------------
-Position in body: 10
-Field:
-part_pos_x: 5
-part_pos_y: 23
-Field type: 1
-Id: 618
-------------------------------------------------------
-Position in body: 9
-Field:
-part_pos_x: 5
-part_pos_y: 22
-Field type: 1
-Id: 617
-------------------------------------------------------
-Position in body: 8
-Field:
-part_pos_x: 5
-part_pos_y: 21
-Field type: 0
-Id: 616
-------------------------------------------------------
-Position in body: 7
-Field:
-part_pos_x: 5
-part_pos_y: 20
-Field type: 1
-Id: 615
-------------------------------------------------------
-Position in body: 6
-Field:
-part_pos_x: 5
-part_pos_y: 19
-Field type: 1
-Id: 614
-------------------------------------------------------
-Position in body: 5
-Field:
-part_pos_x: 5
-part_pos_y: 18
-Field type: 1
-Id: 613
-------------------------------------------------------
-Position in body: 4
-Field:
-part_pos_x: 5
-part_pos_y: 17
-Field type: 0
-Id: 612
-------------------------------------------------------
 Position in body: 3
 Field:
-part_pos_x: 5
-part_pos_y: 16
-Field type: 1
-Id: 611
+part_pos_x: 9
+part_pos_y: 8
+Field type: 0
+Id: 944
 ------------------------------------------------------
 Position in body: 2
 Field:
-part_pos_x: 5
-part_pos_y: 15
-Field type: 1
-Id: 610
+part_pos_x: 8
+part_pos_y: 8
+Field type: 0
+Id: 840
 ------------------------------------------------------
 Position in body: 1
 Field:
-part_pos_x: 5
-part_pos_y: 14
-Field type: 1
-Id: 609
+part_pos_x: 7
+part_pos_y: 8
+Field type: 0
+Id: 736
 ------------------------------------------------------
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 FROM FRONT
-Position in body: 14
-Field:
-part_pos_x: 6
-part_pos_y: 23
-Field type: 0
-Id: 737
-------------------------------------------------------
-Position in body: 13
-Field:
-part_pos_x: 7
-part_pos_y: 23
-Field type: 0
-Id: 856
-------------------------------------------------------
-Position in body: 12
-Field:
-part_pos_x: 7
-part_pos_y: 24
-Field type: 0
-Id: 857
-------------------------------------------------------
-Position in body: 11
-Field:
-part_pos_x: 6
-part_pos_y: 24
-Field type: 0
-Id: 738
-------------------------------------------------------
-Position in body: 10
-Field:
-part_pos_x: 5
-part_pos_y: 24
-Field type: 0
-Id: 619
-------------------------------------------------------
-Position in body: 9
-Field:
-part_pos_x: 5
-part_pos_y: 23
-Field type: 1
-Id: 618
-------------------------------------------------------
-Position in body: 8
-Field:
-part_pos_x: 5
-part_pos_y: 22
-Field type: 1
-Id: 617
-------------------------------------------------------
-Position in body: 7
-Field:
-part_pos_x: 5
-part_pos_y: 21
-Field type: 0
-Id: 616
-------------------------------------------------------
-Position in body: 6
-Field:
-part_pos_x: 5
-part_pos_y: 20
-Field type: 1
-Id: 615
-------------------------------------------------------
-Position in body: 5
-Field:
-part_pos_x: 5
-part_pos_y: 19
-Field type: 1
-Id: 614
-------------------------------------------------------
-Position in body: 4
-Field:
-part_pos_x: 5
-part_pos_y: 18
-Field type: 1
-Id: 613
-------------------------------------------------------
 Position in body: 3
 Field:
-part_pos_x: 5
-part_pos_y: 17
+part_pos_x: 10
+part_pos_y: 8
 Field type: 0
-Id: 612
+Id: 1048
 ------------------------------------------------------
 Position in body: 2
 Field:
-part_pos_x: 5
-part_pos_y: 16
-Field type: 1
-Id: 611
+part_pos_x: 9
+part_pos_y: 8
+Field type: 0
+Id: 944
 ------------------------------------------------------
 Position in body: 1
 Field:
-part_pos_x: 5
-part_pos_y: 15
-Field type: 1
-Id: 610
-------------------------------------------------------
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-FROM FRONT
-Position in body: 14
-Field:
-part_pos_x: 5
-part_pos_y: 23
-Field type: 1
-Id: 618
-------------------------------------------------------
-Position in body: 13
-Field:
-part_pos_x: 6
-part_pos_y: 23
+part_pos_x: 8
+part_pos_y: 8
 Field type: 0
-Id: 737
-------------------------------------------------------
-Position in body: 12
-Field:
-part_pos_x: 7
-part_pos_y: 23
-Field type: 0
-Id: 856
-------------------------------------------------------
-Position in body: 11
-Field:
-part_pos_x: 7
-part_pos_y: 24
-Field type: 0
-Id: 857
-------------------------------------------------------
-Position in body: 10
-Field:
-part_pos_x: 6
-part_pos_y: 24
-Field type: 0
-Id: 738
-------------------------------------------------------
-Position in body: 9
-Field:
-part_pos_x: 5
-part_pos_y: 24
-Field type: 0
-Id: 619
-------------------------------------------------------
-Position in body: 8
-Field:
-part_pos_x: 5
-part_pos_y: 23
-Field type: 1
-Id: 618
-------------------------------------------------------
-Position in body: 7
-Field:
-part_pos_x: 5
-part_pos_y: 22
-Field type: 1
-Id: 617
-------------------------------------------------------
-Position in body: 6
-Field:
-part_pos_x: 5
-part_pos_y: 21
-Field type: 0
-Id: 616
-------------------------------------------------------
-Position in body: 5
-Field:
-part_pos_x: 5
-part_pos_y: 20
-Field type: 1
-Id: 615
-------------------------------------------------------
-Position in body: 4
-Field:
-part_pos_x: 5
-part_pos_y: 19
-Field type: 1
-Id: 614
-------------------------------------------------------
-Position in body: 3
-Field:
-part_pos_x: 5
-part_pos_y: 18
-Field type: 1
-Id: 613
-------------------------------------------------------
-Position in body: 2
-Field:
-part_pos_x: 5
-part_pos_y: 17
-Field type: 0
-Id: 612
-------------------------------------------------------
-Position in body: 1
-Field:
-part_pos_x: 5
-part_pos_y: 16
-Field type: 1
-Id: 611
-------------------------------------------------------
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Id: 840
+----------------------

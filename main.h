@@ -49,7 +49,7 @@ struct field {
 
 
 
-pthread_mutex_t mut_game_terminated;
+extern pthread_mutex_t mut_game_terminated;
 
 struct moving_object* init_moving_object (int x, int y, char texture, int user);
 

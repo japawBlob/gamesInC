@@ -13,6 +13,7 @@ static struct moving_object* user_object;
 
 static struct map* this_map;
 
+
 /*
  *   1
  * 2   3

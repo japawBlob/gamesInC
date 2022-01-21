@@ -1,5 +1,6 @@
 #include "main.h"
 
+pthread_mutex_t mut_game_terminated;
 
 int main(int argc, char const *argv[])
 {

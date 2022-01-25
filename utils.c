@@ -1,5 +1,6 @@
 #include "main.h"
 
+
 static void get_window_size (int* width, int* height);
 static void call_termios(int reset);
 static void create_map (struct map* this_map);
@@ -14,12 +15,8 @@ static struct moving_object* user_object;
 static struct map* this_map;
 
 
-/*
- *   1
- * 2   3
- *   4
-*/
 static int direction = 4;
+
 int get_direction(){
 	return direction;
 }
@@ -88,7 +85,7 @@ void* handle_user_input()
 {
 	// while(1){
 	// 	int blob = getchar();
-	// 	if( blob == '0' ) break;	
+	// 	if( blob == '0' ) break;
 	// 	if( blob == 'w' && user_object->pos_x > 1 ) (user_object->pos_x)--;
 	// 	if( blob == 'a' && user_object->pos_y > 1 ) (user_object->pos_y)--;
 	// 	if( blob == 's' && user_object->pos_x < this_map->height-2 ) (user_object->pos_x)++;
@@ -100,11 +97,11 @@ void* handle_user_input()
 	while(1){
 		char blob;
 		read(0,&blob,1);
-		if( blob == '0' ) break;	
-		if( blob == 'w' ) direction = 1;
-		if( blob == 'a' ) direction = 2;
-		if( blob == 's' ) direction = 3;
-		if( blob == 'd' ) direction = 4;
+		if( blob == '0' ) break;
+		if( blob == 'w' && direction != down ) direction = up;
+		if( blob == 'a' && direction != right ) direction = left;
+		if( blob == 's' && direction != up ) direction = down;
+		if( blob == 'd' && direction != left ) direction = right;
 		if( blob == 'l' ) add_snake_part();
 		if(pthread_mutex_trylock(&mut_game_terminated) == 0){
 			pthread_mutex_unlock(&mut_game_terminated);
@@ -141,7 +138,7 @@ struct map* init_map ()
 	this_map = (struct map*) malloc (sizeof(struct map));
 	int width, height;
 	get_window_size(&width, &height);
-	this_map->width = width-1;
+	this_map->width = width-1; // Minus one because of tailing '\n'
 	this_map->height = height;
 	this_map->fields = (struct field***) malloc (sizeof(struct field**)*height);
 	for (int i = 0; i < this_map->height; ++i){

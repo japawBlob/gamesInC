@@ -56,13 +56,13 @@ void add_snake_part ()
 	jeffrey->snake_head->position_in_body = jeffrey->length;
 	jeffrey->snake_head->part_pos_x = jeffrey->snake_head->next_part->part_pos_x;
 	jeffrey->snake_head->part_pos_y = jeffrey->snake_head->next_part->part_pos_y;
-	if (get_direction() == 1){
+	if (get_direction() == up){
 		jeffrey->snake_head->part_pos_x--;
-	} else if (get_direction() == 2){
+	} else if (get_direction() == left){
 		jeffrey->snake_head->part_pos_y--;
-	} else if (get_direction() == 3){
+	} else if (get_direction() == down){
 		jeffrey->snake_head->part_pos_x++;
-	} else if (get_direction() == 4){
+	} else if (get_direction() == right){
 		jeffrey->snake_head->part_pos_y++;
 	}
 	jeffrey->snake_head->occupied_field = get_map()->fields[jeffrey->snake_head->part_pos_x][jeffrey->snake_head->part_pos_y];
@@ -146,13 +146,13 @@ static void move_snake_body ()
 		temp->occupied_field->curr_texture = jeffrey->body_texture;
 		temp = temp->prev_part;
 	}
-	if (get_direction() == 1){
+	if (get_direction() == up){
 		temp->part_pos_x--; 
-	} else if (get_direction() == 2){
+	} else if (get_direction() == left){
 		temp->part_pos_y--;
-	} else if (get_direction() == 3){
+	} else if (get_direction() == down){
 		temp->part_pos_x++;
-	} else if (get_direction() == 4){
+	} else if (get_direction() == right){
 		temp->part_pos_y++;
 	}
 	struct field * new_field = get_map()->fields[temp->part_pos_x][temp->part_pos_y];

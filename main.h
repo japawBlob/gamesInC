@@ -47,7 +47,9 @@ struct field {
 	int type;
 };
 
-
+enum directions {
+    up = 1, left, down, right
+};
 
 extern pthread_mutex_t mut_game_terminated;
 
@@ -72,6 +74,8 @@ void init_jeffrey (int x, int y);
 int move_jeffrey();
 
 void free_jeffrey();
+
+void update_direction();
 
 int get_direction();
 

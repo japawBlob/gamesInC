@@ -7,6 +7,7 @@ int main(int argc, char const *argv[])
 	init_game();
 	init_map();
 	print_map();
+
 	init_jeffrey(5,5);
 	pthread_t input_thread;
 	pthread_create(&input_thread, NULL, handle_user_input, NULL);
@@ -22,6 +23,7 @@ int main(int argc, char const *argv[])
 	while(1){
 		clock_gettime(CLOCK_REALTIME,&time);
 		if (nanos < 1000000000 * time.tv_sec + time.tv_nsec){
+            //update_direction();
 			if(move_jeffrey() == -1){
 				break;
 			}

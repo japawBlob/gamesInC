@@ -12,7 +12,7 @@ static void print_jeffrey ();
 
 static FILE* f;
 
-void init_jeffrey(x, y)
+void init_jeffrey(int x, int y)
 {
 	f = fopen("jeffrey.out", "w+");
 	jeffrey = (struct snake*) malloc (sizeof(struct snake));
@@ -45,6 +45,7 @@ void init_jeffrey(x, y)
 	print_jeffrey();
 	show_jeffrey();
 }
+// Found bug - segfault - when adding snakeparts next to end of array
 void add_snake_part ()
 {
 	jeffrey->length++;

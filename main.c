@@ -17,9 +17,9 @@ int main(int argc, char const *argv[])
 	pthread_mutex_init(&mut_game_terminated, NULL);
 	pthread_mutex_lock(&mut_game_terminated);
 	struct timespec time;
-	unsigned long period = 1 * 1000000000/2;
+	long period = 1 * 1000000000/2;
 	clock_gettime(CLOCK_REALTIME,&time);
-	unsigned long nanos = 1000000000 * time.tv_sec + time.tv_nsec + period;
+	long nanos = 1000000000 * time.tv_sec + time.tv_nsec + period;
 	while(1){
 		clock_gettime(CLOCK_REALTIME,&time);
 		if (nanos < 1000000000 * time.tv_sec + time.tv_nsec){
